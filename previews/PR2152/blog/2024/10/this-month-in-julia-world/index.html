@@ -47,7 +47,7 @@ crossorigin=""/>
 <script src="https://kit.fontawesome.com/f030d443fe.js" crossorigin="anonymous"></script>
 
 
-   <title>The 2020 Industry Julia Users Contributhon</title>   
+   <title>This Month in Julia World</title>   
 
   
   <style>
@@ -79,8 +79,8 @@ crossorigin=""/>
   
 
   <!-- OGP Metadata -->
-	<meta property="og:title" content="The 2020 Industry Julia Users Contributhon">
-<meta property="og:description" content="A Look Back At The 2020 Industry Julia Users Contributhon">
+	<meta property="og:title" content="This Month in Julia World">
+<meta property="og:description" content="Community Newsletter for September 2024">
 <meta property="og:image" content="/assets/images/julia-open-graph.png">
 
 
@@ -138,98 +138,111 @@ crossorigin=""/>
 
 
 <div class="container blog-title">
-  <h1>The 2020 Industry Julia Users Contributhon
+  <h1>This Month in Julia World
     <a type="application/rss+xml" href="https://julialang.org/feed.xml">
       <i class="fa fa-rss-square rss-icon"></i>
     </a>
   </h1>
   <h3>
-   <span style="font-weight: lighter;"> 20 January 2021 </span>
+   <span style="font-weight: lighter;"> 05 October 2024 </span>
 	|
 	
 	 <span style="font-weight: bold;"></span> 
   <!-- assumption that only one of the two is defined -->
-   <span style="font-weight: bold;">Jarrett Revels </span> 
+   <span style="font-weight: bold;">Stefan Krastanov </span> 
   </h3>
 </div>
 
 
 
-<a href="https://github.com/JuliaLang/www.julialang.org/blob/master/blog/2021/01/contributhon.md" title="Edit this page on GitHub" class="edit-float">
+<a href="https://github.com/JuliaLang/www.julialang.org/blob/master/blog/2024/10/this-month-in-julia-world.md" title="Edit this page on GitHub" class="edit-float">
 </a>
 
 
 <!-- Content appended here -->
-<div class="container main"><p>A few months ago, I wrote <a href="https://julialang.org/blog/2020/09/juliacon-2020-open-source-bof-follow-up/">a blog post</a> reflecting on an interesting JuliaCon 2020 discussion between a group of industry-focused Julia users that focused on the interplay between closed-source proprietary software development and Julia&#39;s open source software &#40;OSS&#41; ecosystem. The blog post summarized a few key issues that our discussion group felt served as real hurdles to meaningful OSS contribution from within private organizations. The post concluded by announcing our attempt to jump these hurdles: the Julia Industry Users Contributhon, a hackathon where participating industry organizations could come together to contribute back to the Julia ecosystem.</p>
-<p>This event&#39;s goals were to...</p>
-<blockquote>
+<div class="container main"><p>A monthly newsletter, mostly on Julia internals, digestible for casual observers. A biased, incomplete, editorialized list of what I found interesting this month, with contributions from the community.</p>
+<p>“Internals” Fora and Core Repos &#40;Slack/Zulip/Discourse/Github&#41;:</p>
 <ul>
-<li><p>...foster/strengthen collaboration across organizational boundaries, and reduce potentially duplicated efforts.</p>
+<li><p><a href="https://docs.julialang.org/en/v1.12-dev/manual/performance-tips/#Execution-latency,-package-loading-and-package-precompiling-time">Well documented tips on how to minimize latency</a> in your packages are now organized in a new section in the “Performance Tips” docs</p>
 </li>
-<li><p>...both push forward and prove the Julia ecosystem’s readiness for “production” use.</p>
+<li><p>The trace-compile capabilities provide a convenient way to track what the compiler is working on as you ecnounter new methods during runtime. It is extremely helpful when you want to figure out what precompile statements to add to your packages. A few quality-of-life improvements are coming up, with <a href="https://github.com/JuliaLang/julia/pull/55763">better colored output for the traces</a>.</p>
 </li>
-<li><p>...provide a nice promotional incentive for the involved organizations to dedicate time to and participate in OSS efforts.</p>
+<li><p>Relatedly, recently we got a special-case of trace-compile, <a href="https://github.com/JuliaLang/julia/pull/55848">the new trace-dispatch</a> which prints precompile statements only for dynamically encountered methods.</p>
 </li>
-<li><p>...provide promotional and technical benefits to the Julia community as whole.</p>
+<li><p>And to make this even better, both of these capabilities will now be available interactively directly from the REPL thanks to <a href="https://github.com/JuliaLang/julia/pull/55915">new introspection macros</a>.</p>
 </li>
-<li><p>...and have a huge amount of fun&#33;</p>
+<li><p>A great new capability for profiling <a href="https://github.com/JuliaLang/julia/pull/55826">why the garbage collector is being triggered</a>.</p>
+</li>
+<li><p>Work on yet more parallelism in the gargabe collector &#40;<a href="https://github.com/JuliaLang/julia/pull/55643">parallel sweeps of stack pools</a>&#41;</p>
+</li>
+<li><p>Yet more refactoring and cleanup to enable use of <a href="https://github.com/JuliaLang/julia/pull/55608">external garbage collectors</a>.</p>
+</li>
+<li><p>Better caching of package precompiled code and package extensions drastically lowered the time-to-first-X in the ecosystem over the last couple of years. This led also to much more precompilation being possible, which leads to the trade off of long installation times. A <a href="https://github.com/JuliaLang/julia/issues/55516">discussion has started on github</a> about how to enable more modular packages &#40;lowering the amount of what is installed and compiled&#41; without leading to a proliferation of registered subpackages with &#40;frustratingly&#41; independent versioning.</p>
+</li>
+<li><p>New primitives for reliably expressing once-per-thread or once-per-process objects <a href="https://github.com/JuliaLang/julia/pull/55793">are nearly ready</a>. <a href="https://github.com/JuliaLang/julia/pull/55671">simplifying the implementation for abstract arrays</a>, <a href="https://github.com/JuliaLang/julia/pull/55673">better implementation for Bool tuples</a>.</p>
+</li>
+<li><p>A variety of improvements to <code>any</code> and <code>all</code>: <a href="https://github.com/JuliaLang/julia/pull/55669">better generic implementation for <code>in</code></a>,</p>
+</li>
+<li><p>Looking into <a href="https://github.com/JuliaLang/julia/pull/55650">enabling the use of the new LLVM 19</a> in the julia compiler.</p>
+</li>
+<li><p>Improvements to the internals of how <a href="https://github.com/JuliaLang/julia/pull/55623">Julia handles external signals</a>.</p>
+</li>
+<li><p>A neat and small improvement in how the optimizer <a href="https://github.com/JuliaLang/julia/pull/55600">handles throwing errors for undefined variables</a> – it is small, so it can be a good place to start reading internal implementation code. Based on another small improvement in <a href="https://github.com/JuliaLang/julia/pull/55545">how much metadata the optimizer tracks in conditionals</a>.</p>
+</li>
+<li><p>Minor improvements to the non-default makefile for compiling Julia with <a href="https://github.com/JuliaLang/julia/pull/55581">profile guided optimization and link time optimization</a>. That makefile has been discussed before in the newsletter – hopefully it will become a default in the future, but until then you can gain some compiler performance by using it manually.</p>
+</li>
+<li><p>It is always frustrating when Julia or Julia’s imported BLAS does not automatically obey the number of logically-available threads. <a href="https://github.com/JuliaLang/julia/pull/55574">Related fixes</a>.</p>
 </li>
 </ul>
-</blockquote>
-<p>Now, in 2021, I&#39;m happy to report on all of the great contributions made as part of the event last month by the wonderful folks at <a href="https://beacon.bio/">Beacon Biosignals</a>, <a href="https://www.invenia.ca/">Invenia</a>, <a href="https://www.triscale-innov.com/">TriScale innov</a>, <a href="https://relational.ai/">RelationalAI</a>, and <a href="https://pumas.ai/">PumasAI</a>. All shapes and sizes of contribution were welcome at the event: we released whole packages, made PRs, caught bugs, started new projects, and planned out our OSS roadmaps/backlogs for future work.</p>
-<p>Here is a sampling of the standouts:</p>
+<p>Dustbin of History:</p>
 <ul>
-<li><p><a href="https://github.com/beacon-biosignals/Lighthouse.jl">Lighthouse.jl</a>, which provides a minimal framework-agnostic interface to standardize/automate performance evaluation for multiclass, multirater classification models &#40;Beacon Biosignals&#41;</p>
-</li>
-<li><p><a href="https://github.com/beacon-biosignals/SerializationCaches.jl">SerializationCaches.jl</a>, which provides a simple, composable mechanism for caching objects that take significantly longer to compute from scratch than to &#40;de&#41;serialize from disk &#40;Beacon Biosignals&#41;</p>
-</li>
-<li><p><a href="https://github.com/beacon-biosignals/K8sClusterManagers.jl">K8sClusterManagers.jl</a>, which provides mechanisms to dynamically provision Julia workers overtop a K8s cluster &#40;Beacon Biosignals&#41;</p>
-</li>
-<li><p><a href="https://github.com/beacon-biosignals/KeywordSearch.jl">KeywordSearch.jl</a>, which leverages <a href="https://github.com/matthieugomez/StringDistances.jl">StringDistances.jl</a> to provide a nice interface for fuzzy document searches &#40;Beacon Biosignals&#41;</p>
-</li>
-<li><p><a href="https://github.com/beacon-biosignals/PyMNE.jl">PyMNE.jl</a>, an interface to <a href="https://mne.tools/stable/index.html">MNE</a> built on top of <a href="https://github.com/JuliaPy/PyCall.jl">PyCall</a> &#40;Beacon Biosignals&#41;</p>
-</li>
-<li><p>myriad JuliaPlots contributions &#40;Beacon Biosignals&#41;: <a href="https://github.com/JuliaPlots/AbstractPlotting.jl/pull/569">AbstractPlotting.jl#569</a>, <a href="https://github.com/JuliaPlots/AbstractPlotting.jl/pull/570">AbstractPlotting.jl#570</a>, <a href="https://github.com/JuliaPlots/WGLMakie.jl/pull/71">WGLMakie.jl#71</a>, <a href="https://github.com/SimonDanisch/JSServe.jl/pull/76">JSServe.jl#76</a></p>
-</li>
-<li><p>improved <a href="https://github.com/JuliaRegistries/RegistryCI.jl/pull/306">RegistryCI.jl support for private package registries</a> &#40;Beacon Biosignals&#41;</p>
-</li>
-<li><p>myriad AWS-related contributions &#40;Invenia, Beacon Biosignals&#41;:, <a href="https://github.com/JuliaCloud/AWSS3.jl/pull/118">AWSS3.jl#118</a>, <a href="https://github.com/JuliaCloud/AWSS3.jl/pull/119">AWSS3.jl#119</a>, <a href="https://github.com/JuliaCloud/AWSS3.jl/pull/120">AWSS3.jl#120</a>, <a href="https://github.com/JuliaCloud/AWSS3.jl/pull/121">AWSS3.jl#121</a>, <a href="https://github.com/JuliaCloud/AWSS3.jl/pull/124">AWSS3.jl#124</a>, <a href="https://github.com/JuliaCloud/AWS.jl/pull/257">AWS.jl#257</a>, <a href="https://github.com/JuliaCloud/AWS.jl/pull/260">AWS.jl#260</a>, <a href="https://github.com/JuliaCloud/AWS.jl/pull/262">AWS.jl#262</a>, <a href="https://github.com/JuliaCloud/AWS.jl/pull/265">AWS.jl#265</a></p>
-</li>
-<li><p><a href="https://github.com/JuliaCloud/AWSTools.jl">AWSTools.jl</a>, assortment of AWS utility functions &#40;Invenia&#41;</p>
-</li>
-<li><p><a href="https://github.com/invenia/DateSelectors.jl">DateSelectors.jl</a>, which provides utilities for partitioning dates into test/train/validation/etc. sets for time-series machine learning &#40;Invenia&#41;</p>
-</li>
-<li><p><a href="https://github.com/invenia/Cliquing.jl">Cliquing.jl</a>, which implements various algorithms for finding a non-overlapping set of cliques in a graph &#40;Invenia&#41;</p>
-</li>
-<li><p><a href="https://github.com/invenia/Checkpoints.jl">Checkpoints.jl</a>, which provides mechanisms for dynamically checkpointing Julia program state &#40;Invenia&#41;</p>
-</li>
-<li><p><a href="https://github.com/invenia/PDMatsExtras.jl">PDMatsExtras.jl</a>, which extends <a href="https://github.com/JuliaStats/PDMats.jl">PDMats.jl</a> with a couple different positive &#40;semi-&#41;definite matrix types that <a href="https://github.com/JuliaStats/Distributions.jl/issues/1219">nicely interopate with Distributions.jl</a> &#40;Invenia&#41;</p>
-</li>
-<li><p><a href="https://github.com/triscale-innov/RegistryCLI.jl">RegistryCLI.jl</a>, a tool for easily managing private package registries directly from the command line &#40;TriScale innov&#41;</p>
-</li>
-<li><p><a href="https://github.com/RelationalAI-oss/XUnit.jl">XUnit.jl</a>, a unit test framework with nice parallelization capabilities &#40;RelationalAI&#41;</p>
-</li>
-<li><p>Compiler support for compilation profiling during inference/LLVM optimization, <a href="https://timholy.github.io/SnoopCompile.jl/stable/snoopi_deep/">enabling cool new SnoopCompile.jl features</a> &#40;RelationalAI&#41;</p>
-</li>
-<li><p>Various quality-of-life improvements to <a href="https://github.com/JuliaPerf/PProf.jl">PProf.jl</a>, including interoperability with <a href="https://github.com/timholy/FlameGraphs.jl">FlameGraphs.jl</a> and <a href="https://github.com/timholy/SnoopCompile.jl">SnoopCompile.jl</a>. &#40;RelationalAI&#41;</p>
+<li><p>Wouldn’t it be great if we had <a href="https://github.com/JuliaLang/julia/issues/40717">a type-safe <code>&#61;&#61;</code></a> &#40;related to occasionally conflating <code>&#61;&#61;</code> and <code>&#61;&#61;&#61;</code>&#41;.</p>
 </li>
 </ul>
-<p>...and so many more issues/PRs/etc. that I couldn&#39;t fit here - especially the important work that went into <a href="https://docs.google.com/document/d/16Rwkr5u8WdPh-AHVJHs2D2e-0SrUHQS_ZTB0fiepsmU/edit">public OSS backlog creation</a>.</p>
-<p>On top of the contributions themselves, this event taught us about &#40;or in some cases, reminded us of&#41; a few valuable points:</p>
+<p>In search of contributors and new maintainers &#40;specify novice/moderate/expert and internals/domain background necessary&#41;:</p>
 <ul>
-<li><p>Julia&#39;s package manager works seamlessly even when a single package&#39;s registered versions are split across private and public registries. In a lot of cases, this made it super easy to upgrade downstream internal packages to the now-open versions of their upstream dependencies - it just required a version bump&#33;</p>
+<li><p>The Center for Quantum Networks is running <a href="https://github.com/QuantumSavory/.github/blob/main/BUG_BOUNTIES.md">many bounties and minigrants</a> on a variety of support packages for quantum information science. Few thousand &#36; will be paid out already in October for bounties from August.</p>
 </li>
-<li><p>Having a well-documented, battle-tested internal process for safely open-sourcing private code drastically lowers the barrier to actually doing so. Creating an explicit &#40;and if possible, public&#41; &quot;OSS backlog&quot; is a great way to kickstart the development of an internal process.</p>
+<li><p><a href="https://sciml.ai/small_grants/">SciML is running a large set of funded small projects</a> – a great opportunity to contribute to the community and be paid for it.</p>
 </li>
-<li><p><a href="https://gather.town/">Gather</a> is actually a pretty useful platform for collaboration&#33; Just like at JuliaCon, it was fun to meet and hang out with the actual people behind the GitHub handles you come across day-to-day in the online Julia community. Also, adding a spacial component to video chat really goes a long way towards recreating the vibe of a shared workspace. After having a great experience using it to host the event, we at Beacon Biosignals created our own internal Gather space that we hang out in daily.</p>
-</li>
-<li><p>Cross-org collaboration has always been a huge development driver in the Julia community, and this event was no different&#33; It was fun to discover the various points of intersection between our orgs&#39; tech stacks, and start working together directly on these tools. The JuliaCloud ecosystem &#40;especially <a href="https://github.com/JuliaCloud/AWS.jl">AWS.jl</a>&#41; turned out to be of particular interest across participants.</p>
-</li>
-<li><p>There are a lot of amazing engineers out there who, before joining an OSS-friendly company, never had an opportunity to contribute to OSS as part of their day-job. This event served as a great OSS onboarding ramp by enabling these individuals to translate pre-existing internal work into impactful external contributions.</p>
+<li><p>ChainRules, a foundational package to the Julia autodiff effort is looking for a <a href="https://discourse.julialang.org/t/chainrules-project-looking-for-a-new-primary-maintainer/115636">new primary maintainer</a>.</p>
 </li>
 </ul>
-<p>All in all, I&#39;d say the Contributhon was a success, and established some key points of collaboration between industry Julia users that I suspect will carry on for quite some time. More importantly, it was a whole lot of fun. Thanks to everybody that attended, everybody that facilitated, and all the wonderful folks in OSS community whose projects support Julia&#39;s continued rise in industry&#33;</p>
-<p>Have thoughts/questions about this blog post and/or the use of Julia in industry? Come join the discussion in <a href="https://julialang.slack.com/join/shared_invite/zt-ggsythg2-qYjdCBzGPeXceYCnCfpKsQ#/">the Julia Slack&#39;s</a> <code>#industry-users</code> channel&#33;</p>
+<p>Ecosystem Fora, Maintenance, and Colab Promises &#40;Slack/Zulip/Discourse/Github&#41;:</p>
+<ul>
+<li><p><a href="https://discourse.julialang.org/t/juliacon-global-2025-announcement/119656">JuliaCon Global 2025</a> will be in Pittsburgh from July 21 - July 26, 2025.</p>
+</li>
+<li><p>Tutorials on <a href="https://discourse.julialang.org/t/ann-a-tutorial-for-jlrs/119651">interoperability between Rust and Julia</a>.</p>
+</li>
+<li><p>A <a href="https://discourse.julialang.org/t/the-unreasonable-efficiency-and-effectiveness-of-multiple-dispatch-your-favourite-examples/119477">fun discussion</a> with many examples of the surprising power of multiple dispatch &#40;the main programming paradigm in Julia&#41; – a good place to mine for examples.</p>
+</li>
+<li><p>Discussion on planned improvements for the <a href="https://discourse.julialang.org/t/redesigning-string-optimising-small-strings-and-comparison/119716">low-level implementation of strings</a> in Julia.</p>
+</li>
+<li><p>https://discourse.julialang.org/t/enzyme-ready-for-everyday-use-2024/118819</p>
+</li>
+<li><p>There is a new <a href="https://github.com/gdalle/DifferentiationInterface.jl/releases/tag/DifferentiationInterface-v0.6.0">breaking release</a> of DifferentiationInterface &#40;v0.6&#41; with support for additional constant arguments. This opens DI to even more use cases, so @gdalle will try to integrate it to a bunch of SciML repos &#40;NonlinearSolve, Optimization, OrdinaryDiffEq&#41; as well as Turing. Other potential users are more than welcome to open issues and ask for help.</p>
+</li>
+<li><p>AcceleratedKernels.jl is a new library with <a href="https://discourse.julialang.org/t/ann-acceleratedkernels-jl-cross-architecture-parallel-algorithms-for-julias-gpu-backends/119698">primitives for parallel algorithms</a> on any hardware accelerator.</p>
+</li>
+<li><p>OptimalTransportNetworks.jl is a new library for <a href="https://discourse.julialang.org/t/ann-new-optimaltransportnetworks-jl-optimal-transport-networks-in-spatial-equilibrium/119649">optimizing paths in networks</a>.</p>
+</li>
+<li><p>Guidelines for setting up <a href="https://discourse.julialang.org/t/juhpc-hpc-setup-for-juliaup-julia-and-some-hpc-key-packages/119556">Julia on HPC clusters</a> in a reliable and clean way.</p>
+</li>
+<li><p>Brief discussion on baseline comparisons between <a href="https://discourse.julialang.org/t/lux-jl-vs-jax/119654">Lux and Jax</a>.</p>
+</li>
+</ul>
+<p>Soapboxes &#40;blogs/talks&#41;:</p>
+<ul>
+<li><p>A pleasant and pedagogically valuable blog post on the <a href="https://dev.to/jballanc/some-types-part-1-3b1n">Julia type system</a></p>
+</li>
+<li><p>Consider subscribing to the <a href="https://pnavaro.github.io/NouvellesJulia/">French community newsletter</a> &#40;much of the shared materials are in English&#41;.</p>
+</li>
+<li><p>Consider subscribing to the <a href="https://julialang.org/community/#events">community calendar</a> to be informed of upcoming virtual meetings and talks.</p>
+</li>
+<li><p>Consider attending the triage meetings of the Julia core contributors &#40;organized on Slack&#41; – being a fly on the wall can be a great way to learn the nitty-gritty details of current priorities and development work. These are organized on the triage channel in slack. <a href="https://hackmd.io/@LilithHafner/HJaw__uMp">Minutes are kept</a>.</p>
+</li>
+</ul>
+<p>You can engage in the discussion of this newsletter on <a href="https://discourse.julialang.org/c/community/news/66">Discourse</a></p>
 </div><br><br>
 
 <!-- CONTENT ENDS HERE -->
