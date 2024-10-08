@@ -23,6 +23,21 @@
 
 <item>
   <title>
+    <![CDATA[  Julia 1.11 Highlights  ]]>
+  </title>
+  <link> https://julialang.netlify.app/previews/PR2152/blog/2024/10/julia-1.11-highlights/index.html </link>
+  <guid> https://julialang.netlify.app/previews/PR2152/blog/2024/10/julia-1.11-highlights/index.html </guid>
+  <description>
+    <![CDATA[  Highlights of the Julia 1.11 release.  ]]>
+  </description>  
+    
+  <pubDate>Tue, 08 Oct 2024 00:00:00 +0000</pubDate>  
+  
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  This Month in Julia World  ]]>
   </title>
   <link> https://julialang.netlify.app/previews/PR2152/blog/2024/10/this-month-in-julia-world/index.html </link>
@@ -32,21 +47,6 @@
   </description>  
     
   <pubDate>Sat, 05 Oct 2024 00:00:00 +0000</pubDate>  
-  
-        
-</item>
-
-<item>
-  <title>
-    <![CDATA[  Julia 1.11 Highlights  ]]>
-  </title>
-  <link> https://julialang.netlify.app/previews/PR2152/blog/2024/10/julia-1.11-highlights/index.html </link>
-  <guid> https://julialang.netlify.app/previews/PR2152/blog/2024/10/julia-1.11-highlights/index.html </guid>
-  <description>
-    <![CDATA[  Highlights of the Julia 1.11 release.  ]]>
-  </description>  
-    
-  <pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate>  
   
         
 </item>
