@@ -73,51 +73,48 @@ crossorigin=""/>
 
 <body>
 
-<div class="container py-3 py-lg-0">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-menu">
-    <!-- LOGO -->
-    <a class="navbar-brand" href="/previews/PR2138/">
-      <img class="julialogo" src="/previews/PR2138/assets/infra/logo.svg" alt="JuliaLang Logo">
-    </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+      <a class="navbar-brand" href="/previews/PR2138/">
+          <img src="/previews/PR2138/assets/infra/logo.svg" alt="JuliaLang Logo" height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link" href="/previews/PR2138/downloads/">Download</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://docs.julialang.org">Documentation</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/previews/PR2138/learning/">Learn</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/previews/PR2138/blog/">Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/previews/PR2138/community/">Community</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/previews/PR2138/contribute/">Contribute</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/previews/PR2138/jsoc/">JSoC</a>
+              </li>
+          </ul>
+          <div class="navbar-action-buttons d-flex gap-4">
+              <a class="btn btn-outline-dark btn-sm btn-star" href="https://github.com/JuliaLang/julia" target="_blank">⭐ Star</a>
+              <a class="btn btn-danger btn-sm btn-sponsor" href="https://github.com/sponsors/julialang" target="_blank">❤️ Sponsor</a>
+          </div>
+      </div>
+  </div>
+</nav>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <button class="navbar-toggler ml-auto hidden-sm-up float-xs-left" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-      <!-- MENU: DOWNLOAD | DOCUMENTATION | BLOG ... -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item   flex-md-fill text-md-center">
-          <a class="nav-link" href="/previews/PR2138/downloads/">Download</a>
-        </li>
-        <li class="nav-item flex-md-fill text-md-center">
-          <a class="nav-link" href="https://docs.julialang.org">Documentation</a>
-        </li>
-        <li class="nav-item   flex-md-fill text-md-center">
-          <a class="nav-link" href="/previews/PR2138/learning/">Learn</a>
-        </li>
-        <li class="nav-item  flex-md-fill text-md-center">
-          <a class="nav-link" href="/previews/PR2138/blog/">Blog</a>
-        </li>
-        <li class="nav-item   flex-md-fill text-md-center">
-          <a class="nav-link" href="/previews/PR2138/community/">Community</a>
-        </li>
-        <li class="nav-item   flex-md-fill text-md-center">
-          <a class="nav-link" href="/previews/PR2138/contribute/">Contribute</a>
-        </li>
-        <li class="nav-item  active flex-md-fill text-md-center">
-          <a class="nav-link" href="/previews/PR2138/jsoc/">JSoC</a>
-        </li>
-      </ul>
-      <span class="navbar-right">
-        <a class="github-button" href="https://github.com/JuliaLang/julia" data-size="large" data-show-count="true" aria-label="Star JuliaLang/julia on GitHub">Star</a>
-        <a class="github-button" href="https://github.com/sponsors/julialang" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @julialang on GitHub">Sponsor</a>
-      </span>
-    </div>
-
-  </nav>
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <br><br>
 
@@ -134,14 +131,14 @@ crossorigin=""/>
 <p><a href="https://github.com/ababii/Pythia.jl">Pythia</a> is a package for scalable machine learning time series forecasting and nowcasting in Julia.</p>
 <p>The project mentors are <a href="https://ababii.github.io/">Andrii Babii</a> and <a href="https://www.turing.ac.uk/people/researchers/sebastian-vollmer/">Sebastian Vollmer</a>.</p>
 <h2 id="machine_learning_for_nowcasting_and_forecasting"><a href="#machine_learning_for_nowcasting_and_forecasting" class="header-anchor">Machine learning for nowcasting and forecasting</a></h2>
-<p>This project involves developing scalable machine learning time series regressions for nowcasting and forecasting. Nowcasting in economics is the prediction of the present, the very near future, and the very recent past state of an economic indicator. The term is a contraction of &quot;now&quot; and &quot;forecasting&quot; and originates in meteorology. </p>
-<p>The objective of this project is to introduce scalable regression-based nowcasting and forecasting methodologies that demonstrated the empirical success in data-rich environment recently. Examples of existing popular packages for regression-based nowcasting on other platforms include the &quot;MIDAS Matlab Toolbox&quot;, as well as the &#39;midasr&#39; and &#39;midasml&#39; packages in R. The starting point for this project is porting the &#39;midasml&#39; package from R to Julia. Currently Pythia has the sparse-group LASSO regression functionality for forecasting. </p>
+<p>This project involves developing scalable machine learning time series regressions for nowcasting and forecasting. Nowcasting in economics is the prediction of the present, the very near future, and the very recent past state of an economic indicator. The term is a contraction of &quot;now&quot; and &quot;forecasting&quot; and originates in meteorology.</p>
+<p>The objective of this project is to introduce scalable regression-based nowcasting and forecasting methodologies that demonstrated the empirical success in data-rich environment recently. Examples of existing popular packages for regression-based nowcasting on other platforms include the &quot;MIDAS Matlab Toolbox&quot;, as well as the &#39;midasr&#39; and &#39;midasml&#39; packages in R. The starting point for this project is porting the &#39;midasml&#39; package from R to Julia. Currently Pythia has the sparse-group LASSO regression functionality for forecasting.</p>
 <p>The following functions are of interest: in-sample and out-of sample forecasts/nowcasts, regularized MIDAS with Legendre polynomials, visualization of nowcasts, AIC/BIC and time series cross-validation tuning, forecast evaluation, pooled and fixed effects panel data regressions for forecasting and nowcasting, HAC-based inference for sparse-group LASSO, high-dimensional Granger causality tests. Other widely used existing functions from R/Python/Matlab are also of interest.</p>
 <p><strong>Recommended skills:</strong> Graduate-level knowledge of time series analysis, machine learning, and optimization is helpful.</p>
 <p><strong>Expected output:</strong> The contributor is expected to produce code, documentation, visualization, and real-data examples.</p>
 <p><strong>References:</strong> Contact project mentors for references.</p>
 <h2 id="time_series_forecasting_at_scales"><a href="#time_series_forecasting_at_scales" class="header-anchor">Time series forecasting at scales</a></h2>
-<p>Modern business applications often involve forecasting hundreds of thousands of time series. Producing such a gigantic number of reliable and high-quality forecasts is computationally challenging, which limits the scope of potential methods that can be used in practice, see, e.g., the &#39;forecast&#39;, &#39;fable&#39;, or &#39;prophet&#39; packages in R. Currently, Julia lacks the scalable time series forecasting functionality and this project aims to develop the automated data-driven and scalable time series forecasting methods. </p>
+<p>Modern business applications often involve forecasting hundreds of thousands of time series. Producing such a gigantic number of reliable and high-quality forecasts is computationally challenging, which limits the scope of potential methods that can be used in practice, see, e.g., the &#39;forecast&#39;, &#39;fable&#39;, or &#39;prophet&#39; packages in R. Currently, Julia lacks the scalable time series forecasting functionality and this project aims to develop the automated data-driven and scalable time series forecasting methods.</p>
 <p>The following  functionality is of interest: forecasting intermittent demand &#40;Croston, adjusted Croston, INARMA&#41;, scalable seasonal ARIMA with covariates, loss-based forecasting &#40;gradient boosting&#41;, unsupervised time series clustering, forecast combinations, unit root tests &#40;ADF, KPSS&#41;. Other widely used existing functions from R/Python/Matlab are also of interest.</p>
 <p><strong>Recommended skills:</strong> Graduate-level knowledge of time series analysis is helpful.</p>
 <p><strong>Expected output:</strong> The contributor is expected to produce code, documentation, visualization, and real-data examples.</p>
@@ -262,7 +259,7 @@ crossorigin=""/>
     </div>
     <div id="footer-bottom" class="row">
       <div class="col-md-10 py-2">
-        <p>Last modified: January 09, 2025. This site is powered by <a href="https://www.netlify.com">Netlify</a>, <a href="https://franklinjl.org">Franklin.jl</a>, and the <a href="https://julialang.org">Julia Programming Language</a>.</p>
+        <p>This site is powered by <a href="https://www.netlify.com">Netlify</a>, <a href="https://franklinjl.org">Franklin.jl</a>, and the <a href="https://julialang.org">Julia Programming Language</a>.</p>
         <p>We thank <a href="https://www.fastly.com">Fastly</a> for their generous infrastructure support.</p>
         <p>©2024 JuliaLang.org <a href="https://github.com/JuliaLang/www.julialang.org/graphs/contributors">contributors</a>. The content on this website is made available under the <a href="https://github.com/JuliaLang/www.julialang.org/blob/master/LICENSE.md">MIT license</a>.</p>
       </div>
