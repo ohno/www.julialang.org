@@ -121,8 +121,8 @@ crossorigin=""/>
               </li>
           </ul>
           <div class="navbar-action-buttons d-flex gap-4">
-              <a class="btn btn-outline-dark btn-sm btn-star" href="https://github.com/JuliaLang/julia" target="_blank">⭐ Star</a>
-              <a class="btn btn-danger btn-sm btn-sponsor" href="https://github.com/sponsors/julialang" target="_blank">❤️ Sponsor</a>
+              <a class="github-button" href="https://github.com/JuliaLang/julia" data-icon="octicon-star" data-size="large" data-show-count="false" aria-label="Star JuliaLang/julia on GitHub">Star</a>
+              <a class="github-button" href="https://github.com/sponsors/julialang" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @julialang on GitHub">Sponsor</a>
           </div>
       </div>
   </div>
@@ -130,6 +130,7 @@ crossorigin=""/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <br><br>
 
@@ -158,6 +159,7 @@ crossorigin=""/>
 
 <!-- Content appended here -->
 <div class="container main"><p>A monthly newsletter, mostly on julia internals, digestible for casual observers. A biased, incomplete, editorialized list of what I found interesting this month, with contributions from the community.</p>
+<p>FYI, a JuliaCon Local is planned for Paris in late 2025. More details to follow in future issues of the newsletter.</p>
 <p>“Internals” Fora and Core Repos &#40;Slack/Zulip/Discourse/Github&#41;:</p>
 <ul>
 <li><p>Revise is almost ready to work on structs, not just functions… This went from “never going to happen” to “standard feature” in the blink of an eye. See <a href="https://julialang.slack.com/archives/C03D578FCDD/p1738836742511929">slack discussion</a> and the <a href="https://github.com/JuliaLang/julia/pull/57253">last PR in the series</a>.</p>
@@ -180,15 +182,17 @@ crossorigin=""/>
 </li>
 <li><p>Suggested best practices for <a href="https://github.com/JuliaLang/julia/pull/57583">documenting return value types</a>.</p>
 </li>
-<li><p>BinaryBuilder.jl will soon be able to run on newer versions of julia instead of <a href="https://github.com/JuliaPackaging/JLLPrefixes.jl/issues/6">being stuck to 1.7</a> thanks to <a href="https://github.com/JuliaLang/Pkg.jl/pull/4156">stability guarantees to some internals of Pkg</a> enabled by <a href="https://github.com/JuliaLang/Pkg.jl/pull/4151">recent work</a>.</p>
+<li><p>BinaryBuilder.jl <a href="https://github.com/JuliaPackaging/JLLPrefixes.jl/issues/6">is stuck to julia 1.7</a>. Work has started on removing these constraints, thanks to <a href="https://github.com/JuliaLang/Pkg.jl/pull/4156">stability guarantees in Pkg internals</a> enabled by <a href="https://github.com/JuliaLang/Pkg.jl/pull/4151">recent work</a>.</p>
 </li>
-<li><p>Internal support for LLVM 19 and 20 in the julia compiler is <a href="https://github.com/JuliaLang/julia/pull/57352">nearly done</a>.</p>
+<li><p>Internal support for LLVM 19 in the julia compiler is <a href="https://github.com/JuliaLang/julia/pull/56130">done</a> and <a href="https://github.com/JuliaLang/julia/pull/57352">progress is being made for LLVM 20</a>.</p>
 </li>
 <li><p>Support for using various external garbage collection algorithms &#40;thanks to immix&#41; is <a href="https://github.com/JuliaLang/julia/pull/57327">growing here</a> and <a href="https://github.com/JuliaLang/julia/pull/57294">here</a>.</p>
 </li>
 </ul>
 <p>In search of contributors and new maintainers &#40;specify novice/moderate/expert and internals/domain background necessary&#41;:</p>
 <ul>
+<li><p>The Center for Quantum Networks is <a href="https://discourse.julialang.org/t/gui-developer-for-simulation-tools-at-the-nsf-center-for-quantum-networks/126782">hirring GUI developers</a> for work on open source network design and simulation frontend, hopefully with positive outcomes to the graphs.jl ecosystem as well.</p>
+</li>
 <li><p>The Center for Quantum Networks is running <a href="https://github.com/QuantumSavory/.github/blob/main/BUG_BOUNTIES.md">many bounties and minigrants</a> on a variety of support packages for quantum information science.</p>
 </li>
 <li><p><a href="https://sciml.ai/small_grants/">SciML is running a large set of funded small projects</a> – a great opportunity to contribute to the community and be paid for it.</p>
@@ -196,6 +200,8 @@ crossorigin=""/>
 </ul>
 <p>Ecosystem Fora, Maintenance, and Colab Promises &#40;Slack/Zulip/Discourse/Github&#41;:</p>
 <ul>
+<li><p><a href="https://discourse.julialang.org/t/julia-in-colab/126600">Google Colab now supports Julia natively</a></p>
+</li>
 <li><p><a href="https://code.tecosaur.net/tec/ComposableAsyncStatus.jl#headline-1">ComposableAsyncStatus.jl</a> is amazing for <a href="https://julialang.slack.com/archives/C67910KEH/p1739280864875829">progress reporting from multiple potentially parallel tasks</a>.</p>
 </li>
 <li><p><a href="https://discourse.julialang.org/t/release-rxinfer-4-0-0-and-updated-documentation/126145">RxInfer.jl just got to v1</a>, an amazing package for Bayesian inference.</p>

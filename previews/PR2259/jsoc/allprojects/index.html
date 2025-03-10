@@ -97,8 +97,8 @@ crossorigin=""/>
               </li>
           </ul>
           <div class="navbar-action-buttons d-flex gap-4">
-              <a class="btn btn-outline-dark btn-sm btn-star" href="https://github.com/JuliaLang/julia" target="_blank">⭐ Star</a>
-              <a class="btn btn-danger btn-sm btn-sponsor" href="https://github.com/sponsors/julialang" target="_blank">❤️ Sponsor</a>
+              <a class="github-button" href="https://github.com/JuliaLang/julia" data-icon="octicon-star" data-size="large" data-show-count="false" aria-label="Star JuliaLang/julia on GitHub">Star</a>
+              <a class="github-button" href="https://github.com/sponsors/julialang" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @julialang on GitHub">Sponsor</a>
           </div>
       </div>
   </div>
@@ -106,6 +106,7 @@ crossorigin=""/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <br><br>
 
@@ -320,7 +321,7 @@ ERROR: Your expression contained a if_else expression. FastDifferentiation does 
 <p><strong>Duration</strong>: 350h.</p>
 <p><strong>Expected difficulty</strong>: hard.</p>
 <p><strong>Expected outcome</strong>: A noticeable performance increase for many graph convolutional operations.</p>
-<h4 id="support_for_amgdpu_and_apple_silicon"><a href="#support_for_amgdpu_and_apple_silicon" class="header-anchor">Support for AMGDPU and Apple Silicon</a></h4>
+<h4 id="support_for_amdgpu_and_apple_silicon"><a href="#support_for_amdgpu_and_apple_silicon" class="header-anchor">Support for AMDGPU and Apple Silicon</a></h4>
 <p>We currently support scatter/gather operation only on CPU and CUDA hardware. We aim to extend this to AMDGPU and Apple Silicon leveraging KernelAbstractions.jl, AMDGPU.jl, and Metal.jl.</p>
 <p><strong>Duration</strong>: 175h.</p>
 <p><strong>Expected difficulty</strong>: medium.</p>
@@ -434,6 +435,11 @@ ERROR: Your expression contained a if_else expression. FastDifferentiation does 
 </ul>
 <h2 id="high_performance_and_parallel_computing_projects_summer_of_code"><a href="#high_performance_and_parallel_computing_projects_summer_of_code" class="header-anchor">High Performance and Parallel Computing Projects – Summer of Code</a></h2>
 <p>Julia is emerging as a serious tool for technical computing and is ideally suited for the ever-growing needs of big data analytics. This set of proposed projects addresses specific areas for improvement in analytics algorithms and distributed data management.</p>
+<h3 id="dynamic_scheduling_for_mixture_of_experts_using_daggerjl"><a href="#dynamic_scheduling_for_mixture_of_experts_using_daggerjl" class="header-anchor">Dynamic Scheduling for Mixture of Experts using Dagger.jl</a></h3>
+<p><strong>Difficulty:</strong> Hard &#40;350h&#41;</p>
+<p>Dynamic scheduling for Mixture of Experts &#40;MoE&#41; in LLM faces significant challenges due to the irregular computation patterns induced by expert routing, leading to load imbalances, underutilization of compute resources, and high communication overhead. Each token in MoE is routed to only a subset of experts, causing varying batch sizes and unbalanced workload distribution across experts. The traditional static scheduling approach does not efficiently handle these dynamic task assignments. By using Dagger.jl, we can implement a more dynamic, task-based scheduling system that assigns tokens to experts based on real-time compute availability, ensuring a more balanced workload. Dagger’s asynchronous scheduling allows for efficient parallel execution by dynamically distributing the tasks across multiple devices or compute units, improving GPU utilization and reducing bottlenecks. Furthermore, optimizations such as load balancing algorithms, soft routing mechanisms, and fine-grained task prioritization could be applied to maximize resource utilization and minimize execution time. Solving these optimization problems will not only enhance performance but also improve scalability, making MoE models more efficient and suitable for large-scale deployments.</p>
+<p><strong>Skills:</strong> Familiarity with GPU, representing execution models as Flux.jl, DAGs, and CUDA.jl</p>
+<p><strong>Mentors:</strong> <a href="https://github.com/jpsamaroo">Julian Samaroo</a>, and <a href="https://github.com/Rabab53">Rabab Alomairy</a></p>
 <h3 id="distributed_training"><a href="#distributed_training" class="header-anchor">Distributed Training</a></h3>
 <p><strong>Difficulty:</strong> Hard &#40;350h&#41;</p>
 <p>Add a distributed training API for Flux models built on top of <a href="https://github.com/JuliaParallel/Dagger.jl">Dagger.jl</a>. More detailed milestones include building Dagger.jl abstractions for <a href="https://github.com/JuliaParallel/UCX.jl">UCX.jl</a>, then building tools to map Flux models into data parallel Dagger DAGs. The final result should demonstrate a Flux model training with multiple devices in parallel via the Dagger.jl APIs. A stretch goal will include mapping operations with a model to a DAG to facilitate model parallelism as well.</p>
@@ -912,6 +918,17 @@ ERROR: Your expression contained a if_else expression. FastDifferentiation does 
 </li>
 </ul>
 <p>While various medical image visualization tools exist, there is currently no software solution that specifically addresses supervoxel-based visualization across multiple imaging modalities with interactive correction capabilities. This project builds upon MedEye3D as an independent extension, enhancing its capabilities with new features for supervoxel visualization and interaction.</p>
+<h3 id="visual_examples"><a href="#visual_examples" class="header-anchor">Visual Examples</a></h3>
+<ol>
+<li><p>2 Different Patient&#39;s MRI and CT Studies on Transversal plane with supervoxels</p>
+</li>
+</ol>
+<p><img src="../../assets/contribute/gsoc/supervoxel_one.png" alt="MRI and CT Supervoxels" /></p>
+<ol start="2">
+<li><p>Highlighting the same anatomical region in both images with supervoxel display</p>
+</li>
+</ol>
+<p><img src="../../assets/contribute/gsoc/supervoxel_two.png" alt="MRI and CT Supervoxels with same anatomical regions highlighted" /></p>
 <p>Overall, this project aims to contribute to the advancement of medical imaging technology, ultimately benefiting both the scientific community and patient care. Additionally, it will serve as a support tool for digital twin projects, enhancing the reliability of image registration and subsequent measurements.</p>
 <h2 id="music_data_analysis"><a href="#music_data_analysis" class="header-anchor">Music data analysis</a></h2>
 <p><a href="https://github.com/JuliaMusic">JuliaMusic</a> is an organization providing packages and functionalities that allow analyzing the properties of music performances. </p>
@@ -922,6 +939,41 @@ ERROR: Your expression contained a if_else expression. FastDifferentiation does 
 <p><strong>Recommended Skills</strong>: Background in music, familiarity with digital signal processing.</p>
 <p><strong>Expected results</strong>: A well-tested, well-documented function <code>midify</code> in MusicProcessing.jl.</p>
 <p><strong>Mentors</strong>: <a href="https://github.com/Datseris/">George Datseris</a>.</p>
+<h2 id="juliareach"><a href="#juliareach" class="header-anchor">JuliaReach</a></h2>
+<p><a href="https://github.com/JuliaReach">JuliaReach</a> is the Julia ecosystem for reachability computations of dynamical systems. Application domains of set-based reachability include formal verification, controller synthesis and estimation under uncertain model parameters or inputs. For further context reach us on the <a href="https://julialang.zulipchat.com/#narrow/stream/278609-juliareach">JuliaReach zulip</a> stream. You may also refer to the review article <a href="https://www.annualreviews.org/doi/abs/10.1146/annurev-control-071420-081941">Set Propagation Techniques for Reachability Analysis</a>.</p>
+<h3 id="efficient_symbolic-numeric_set_computations"><a href="#efficient_symbolic-numeric_set_computations" class="header-anchor">Efficient symbolic-numeric set computations</a></h3>
+<p><strong>Difficulty</strong>: Medium.</p>
+<p><strong>Description.</strong> <a href="https://github.com/JuliaReach/LazySets.jl">LazySets</a> is the core library of JuliaReach. It provides ways to symbolically compute with geometric sets, with a focus on lazy set representations and efficient high-dimensional processing. The library has been described in the article <a href="https://proceedings.juliacon.org/papers/10.21105/jcon.00097">LazySets.jl: Scalable Symbolic-Numeric Set Computations</a>.</p>
+<p>The main interest in this project is to implement algorithms that leverage the structure of the sets. Typical examples include polytopes and zonotopes &#40;convex&#41;, polynomial zonotopes and Taylor models &#40;non-convex&#41; to name a few.</p>
+<p><strong>Expected Results.</strong> The goal is to implement certain efficient state-of-the-art algorithms from the literature. The code is to be documented, tested, and evaluated in benchmarks. Specific tasks may include &#40;to be driven by the interets of the candidate&#41;: efficient vertex enumeration of <a href="https://juliareach.github.io/LazySets.jl/dev/lib/sets/Zonotope/#LazySets.Zonotope">zonotopes</a>; operations on polynomial zonotopes; operations on <a href="http://archive.www6.in.tum.de/www6/Main/Publications/Althoff2011f.pdf">zonotope bundles</a>; efficient disjointness checks between different set types; <a href="https://ieeexplore.ieee.org/document/7525593">complex zonotopes</a>.</p>
+<p><strong>Expected Length.</strong> 175 hours.</p>
+<p><strong>Recommended Skills.</strong> Familiarity with Julia and Git/GitHub is mandatory. Familiarity with <a href="https://github.com/JuliaReach/LazySets.jl">LazySets</a> is recommended. Basic knowledge of geometric terminology is appreciated but not required.</p>
+<p><strong>Mentors</strong>: <a href="https://github.com/mforets">Marcelo Forets</a>, <a href="https://github.com/schillic">Christian Schilling</a>.</p>
+<h3 id="reachability_with_sparse_polynomial_zonotopes"><a href="#reachability_with_sparse_polynomial_zonotopes" class="header-anchor">Reachability with sparse polynomial zonotopes</a></h3>
+<p><strong>Difficulty</strong>: Medium.</p>
+<p><strong>Description.</strong> Sparse polynomial zonotopes are a new non-convex set representation that are well-suited for reachability analysis of nonlinear dynamical systems. This project is a continuation of <a href="https://summerofcode.withgoogle.com/archive/2022/projects/feZrZfQX">GSoC&#39;2022 - Reachability with sparse polynomial zonotopes</a>, which implemented the basics in <a href="https://github.com/JuliaReach/LazySets.jl">LazySets</a>.</p>
+<p><strong>Expected Results.</strong> It is expected to add efficient Julia implementations of a reachability algorithm for dynamical systems in <a href="https://github.com/JuliaReach/ReachabilityAnalysis.jl">ReachabilityAnalysis</a> which leverages polynomial zonotopes. A successful project should:</p>
+<ul>
+<li><p>Replicate the results from the article &#91;Reachability Analysis for Linear Systems with Uncertain Parameters using Polynomial Zonotopes</p>
+</li>
+</ul>
+<p>&#93;&#40;https://dl.acm.org/doi/abs/10.1145/3575870.3587130&#41;.</p>
+<ul>
+<li><p>The code shall be documented, tested, and evaluated extensively in benchmarks.</p>
+</li>
+</ul>
+<p>For ambitious candidates it is possible to draw connections with neural-network control systems as implemented in <a href="https://github.com/JuliaReach/ClosedLoopReachability.jl">ClosedLoopReachability.jl</a>.</p>
+<p><strong>Expected Length.</strong> 175 hours.</p>
+<p><strong>Recommended Skills.</strong> Familiarity with Julia and Git/GitHub is mandatory. Familiarity with the mentioned Julia packages is appreciated but not required. The project does not require theoretical contributions, but it requires reading a research literature, hence a certain level of academic experience is recommended.</p>
+<p><strong>Literature and related packages.</strong> <a href="https://www.youtube.com/watch?v&#61;iMtq6YeIsjA">This video</a> explains the concept of polynomial zonotopes &#40;slides <a href="https://github.com/JuliaReach/juliareach-days-3-reachathon/blob/master/Challenge_5/Challenge5_PolynomialZonotopes.pdf">here</a>&#41;. The relevant theory is described in <a href="https://arxiv.org/pdf/1901.01780">this research article</a>. There exists a Matlab implementation in <a href="https://tumcps.github.io/CORA/">CORA</a> &#40;the implementation of polynomial zonotopes can be found in <a href="https://github.com/TUMcps/CORA/tree/master/contSet/&#37;40polyZonotope">this folder</a>&#41;.</p>
+<p><strong>Mentors</strong>: <a href="https://github.com/mforets">Marcelo Forets</a>, <a href="https://github.com/schillic">Christian Schilling</a>.</p>
+<h3 id="improving_the_hybrid_systems_reachability_api"><a href="#improving_the_hybrid_systems_reachability_api" class="header-anchor">Improving the hybrid systems reachability API</a></h3>
+<p><strong>Difficulty</strong>: Medium.</p>
+<p><strong>Description.</strong> <a href="https://github.com/JuliaReach/ReachabilityAnalysis.jl">ReachabilityAnalysis</a> is a Julia library for set propagation of dynamical systems. One of the main aims is to handle systems with mixed discrete-continuous behaviors &#40;known as hybrid systems in the literature&#41;. This project will focus on enhancing the capabilities of the library and overall improvement of the ecosystem for users.</p>
+<p><strong>Expected Results.</strong>   Specific tasks may include: problem-specific heuristics for hybrid systems; API for time-varying input sets; flowpipe underapproximations. The code is to be documented, tested, and evaluated in benchmarks. Integration with <a href="https://github.com/SciML/ModelingToolkit.jl">ModelingToolkit.jl</a> can also be considered if there is interest.</p>
+<p><strong>Expected Length.</strong> 175 hours.</p>
+<p><strong>Recommended Skills.</strong> Familiarity with Julia and Git/GitHub is mandatory. Familiarity with <a href="https://github.com/JuliaReach/LazySets.jl">LazySets</a> and <a href="https://github.com/JuliaReach/ReachabilityAnalysis.jl">ReachabilityAnalysis</a> is welcome but not required.</p>
+<p><strong>Mentors</strong>: <a href="https://github.com/mforets">Marcelo Forets</a>, <a href="https://github.com/schillic">Christian Schilling</a>.</p>
 <h2 id="machine_learning_projects"><a href="#machine_learning_projects" class="header-anchor">Machine Learning Projects</a></h2>
 <p><strong>Note: FluxML participates as a NumFOCUS sub-organization. Head to <a href="http://fluxml.ai/gsoc/">the FluxML GSoC page</a> for their idea list.</strong></p>
 <h4 id="reinforcement_learning_environments"><a href="#reinforcement_learning_environments" class="header-anchor">Reinforcement Learning Environments</a></h4>
@@ -1070,90 +1122,38 @@ ERROR: Your expression contained a if_else expression. FastDifferentiation does 
 <p><strong>Mentors:</strong> <a href="https://github.com/Krastanov">Stefan Krastanov</a> <a href="mailto:stefan@krastanov.org">&lt;stefan@krastanov.org&gt;</a> and QuantumOptics.jl team members</p>
 <p><strong>Expected duration:</strong> 175 hours &#40;but applicants can scope it as longer if they plan more extensive work&#41;</p>
 <p><strong>Difficulty:</strong> Easy</p>
-<h2 id="symbolic_computation_project_ideas"><a href="#symbolic_computation_project_ideas" class="header-anchor">Symbolic computation project ideas</a></h2>
-<h3 id="efficient_tensor_differentiation"><a href="#efficient_tensor_differentiation" class="header-anchor">Efficient Tensor Differentiation</a></h3>
-<p>Implement the <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/main-65.pdf">D* algorithm</a> for tensor expressions.</p>
-<p><strong>Recommended Skills</strong>: High school/freshman calculus and basic graph theory &#40;optional&#41;</p>
-<p><strong>Expected Results</strong>: A working implementation of the D* algorithm that is capable of performing efficient differentiations on tensor expressions.</p>
-<p><strong>Mentors</strong>: <a href="https://github.com/YingboMa">Yingbo Ma</a></p>
-<p><strong>Duration</strong>: 350 hours</p>
-<h3 id="symbolic_integration_in_symbolicsjl"><a href="#symbolic_integration_in_symbolicsjl" class="header-anchor">Symbolic Integration in Symbolics.jl</a></h3>
-<p>Implement the <a href="https://dspace.mit.edu/handle/1721.1/11997">heuristic approach to symbolic integration</a>. Then hook into a repository of rules such as <a href="https://rulebasedintegration.org/">RUMI</a>. See also the potential of using symbolic-numeric integration techniques &#40;https://github.com/SciML/SymbolicNumericIntegration.jl&#41;</p>
-<p><strong>Recommended Skills</strong>: High school/Freshman Calculus</p>
-<p><strong>Expected Results</strong>: A working implementation of symbolic integration in the Symbolics.jl library, along with documentation and tutorials demonstrating its use in scientific disciplines.</p>
-<p><strong>Mentors</strong>: <a href="https://github.com/shashi">Shashi Gowda</a>, <a href="https://github.com/YingboMa">Yingbo Ma</a></p>
-<p><strong>Duration</strong>: 350 hours</p>
-<h3 id="xla-style_optimization_from_symbolic_tracing"><a href="#xla-style_optimization_from_symbolic_tracing" class="header-anchor">XLA-style optimization from symbolic tracing</a></h3>
-<p>Julia functions that take arrays and output arrays or scalars can be traced using Symbolics.jl variables to produce a trace of operations. This output can be optimized to use fused operations or call highly specific NNLib functions. In this project you will trace through Flux.jl neural-network functions and apply optimizations on the resultant symbolic expressions. This can be mostly implemented as rule-based rewriting rules &#40;see https://github.com/JuliaSymbolics/Symbolics.jl/pull/514&#41;.</p>
-<p><strong>Recommended Skills</strong>: Knowledge of space and time complexities of array operations, experience in optimizing array code.</p>
-<p><strong>Mentors</strong>: <a href="https://github.com/shashi">Shashi Gowda</a></p>
-<p><strong>Duration</strong>: 175 hours</p>
-<h3 id="automatically_improving_floating_point_accuracy_herbie"><a href="#automatically_improving_floating_point_accuracy_herbie" class="header-anchor">Automatically improving floating point accuracy &#40;Herbie&#41;</a></h3>
-<p><a href="https://herbie.uwplse.org/">Herbie</a> documents a way to optimize floating point functions so as to reduce instruction count while reorganizing operations such that floating point inaccuracies do not get magnified. It would be a great addition to have this written in Julia and have it work on Symbolics.jl expressions. An ideal implementation would use the e-graph facilities of Metatheory.jl to implement this.</p>
-<p><strong>Mentors</strong>: <a href="https://github.com/shashi">Shashi Gowda</a>, <a href="https://github.com/0x0f0f0f">Alessandro Cheli</a></p>
-<p><strong>Duration</strong>: 350 hours</p>
-<h3 id="reparametrizing_ode_models_with_scaling_transformations"><a href="#reparametrizing_ode_models_with_scaling_transformations" class="header-anchor">Reparametrizing ODE models with scaling transformations</a></h3>
-<p><strong>Project Overview:</strong> Many ODE models appearing in applications have hidden symmetries which makes the solution of data fitting problem nonunique. <a href="https://github.com/SciML/StructuralIdentifiability.jl">StructuralIdentifiability.jl</a> offers algorithms for proposing new coordinates for the model removing this redundancy. The approach used at the moment relies on heavy computations and may be very slow for larger models. Scaling is a particular type of reparametrizations which can be discovered much faster. The goal of the project would be to implement such faster algorithms &#40;adapting them to the context of identifiability assessment&#41; and integrate into StructuralIdentifiability.jl.</p>
-<p><strong>Mentors:</strong> <a href="https://github.com/sumiya11">Alexander Demin</a>, <a href="https://www.lix.polytechnique.fr/Labo/Gleb.POGUDIN/">Gleb Pogudin</a></p>
-<p><strong>Project Difficulty</strong>: Medium</p>
-<p><strong>Estimated Duration</strong>: 350 hours</p>
-<p><strong>Ideal Candidate Profile:</strong></p>
+<h2 id="rimujl_-_projector_quantum_monte_carlo"><a href="#rimujl_-_projector_quantum_monte_carlo" class="header-anchor">Rimu.jl - Projector Quantum Monte Carlo</a></h2>
+<p><a href="https://github.com/RimuQMC/Rimu.jl">Rimu.jl</a> is a Julia package for finding ground states &#40;and low-lying excited states&#41; of quantum many-body problems with projector quantum Monte Carlo &#40;using a flavour called full configuration interaction quantum Monte Carlo, FCIQMC&#41; and with exact diagonalisation.</p>
+<h3 id="ab-initio_quantum_chemistry_with_rimujl"><a href="#ab-initio_quantum_chemistry_with_rimujl" class="header-anchor">Ab-Initio Quantum Chemistry with Rimu.jl</a></h3>
+<p><strong>Difficulty</strong>: Easy to medium &#40;if the recommended skills are available&#41;</p>
+<p><strong>Project size</strong>: 175 - 350 hours</p>
+<p><strong>Problem</strong>: <a href="https://github.com/RimuQMC/Rimu.jl">Rimu.jl</a> provides an interface for defining a custom quantum many-body Hamiltonian and currently implements a selection of model Hamiltonians &#40;e.g. variants of the Hubbard model and the Fröhlich polaron model&#41;.  The high-level goal of the project is to implement the required functionality to solve ab-initio quantum chemistry problems with <a href="https://github.com/RimuQMC/Rimu.jl">Rimu.jl</a> and embed the package into the <a href="https://github.com/JuliaMolSim">JuliaMolSim</a> ecosystem, in particular with <a href="https://github.com/fkfest/ElemCo.jl">ElemCo.jl</a>.</p>
+<p><strong>Minimum goal</strong>: A minimum goal would be to enable reading in the relevant information about the molecular orbital basis set and integrals that define the molecular Hamiltonian from a file &#40;in the standard FCIDUMP format&#41; and defining an appropriate Hamiltonian type for Rimu.jl that enables its usage for exact diagonalisation and FCIQMC.</p>
+<p><strong>Extended goal</strong>: An extended goal would be to make the molecular Hamiltonian efficient for FCIQMC, e.g. by finding and implementing an appropriate strategy for an excitation generator, e.g. a variant of &#40;precomputed&#41; heat-bath sampling. Another worthwhile extension would be to implement variants of the Configuration Interaction &#40;CI&#41; method by filtering the configurations to a relevant subspace &#40;e.g. CI-SD, selctive CI, etc.&#41; for the exact-diagonalisation part of Rimu.jl.</p>
+<p><strong>Recommended skills</strong>:</p>
 <ul>
-<li><p>Basic experience with Julia</p>
+<li><p>prior exposure to or strong interest in quantum chemistry</p>
 </li>
-<li><p>Knowledge of linear algebra</p>
+<li><p>good to excellent Julia coding skills</p>
 </li>
 </ul>
-<p><strong>Project Goals and Deliverables:</strong></p>
+<p><strong>Mentors</strong>: <a href="https://github.com/joachimbrand">Joachim Brand</a>, <a href="https://github.com/dnkats">Daniel Kats</a>, <a href="https://github.com/ElkePahl">Elke Pahl</a></p>
+<p>If you are interested please get in touch by <a href="mailto:j.brand@massey.ac.nz">email</a>.</p>
+<h3 id="load_balancing_rimujl_for_multi-node_hpc_calculations"><a href="#load_balancing_rimujl_for_multi-node_hpc_calculations" class="header-anchor">Load balancing Rimu.jl for multi-node &#40;HPC&#41; calculations</a></h3>
+<p><strong>Difficulty</strong>: Medium to hard</p>
+<p><strong>Project size</strong>: 175 - 350 hours</p>
+<p><strong>Problem</strong>: <a href="https://github.com/RimuQMC/Rimu.jl">Rimu.jl</a> parallelises the workload of FCIQMC by making extensive use of native threading for shared-memory parallelism. In high-performance computing environments the primary data structure containing information about the sampled configurations and their amplitudes can further be distributed across nodes, which communicate using the MPI protocol in every time step &#40;making use of <a href="https://github.com/JuliaParallel/MPI.jl">MPI.jl</a>&#41;. In the current implementation the distribution of configurations to nodes is done passively &#40;in a pseudo-random fashion using a hashing algorithm&#41;. While this is fast and easy and usually leads to a fairly even distribution of data and work across the nodes, it does not scale very well when employing hundreds of nodes as every MPI rank has to wait for the slowest one to complete the work done at each time step.</p>
+<p><strong>Minimum goal</strong>: Implement an active load-balancing approach where load information of each MPI rank is monitored and work load is shifted between nodes to even out the workload.</p>
+<p><strong>Extended goal</strong>: Explore other load-balancing strategies like agent-based approaches, possibly even exploring algorithmic alternatives &#40;e.g. continuous-time Monte Carlo&#41;. Design communication protocols that take into account the network topology.</p>
+<p><strong>Recommended skills</strong>:</p>
 <ul>
-<li><p>Implementation of an algorithm in Julia to perform scaling reparametrization of ODEs</p>
+<li><p>experience with HPC environments and MPI-style programming</p>
 </li>
-<li><p>Comprehensive documentation and examples</p>
-</li>
-<li><p>&#40;Bonus&#41; Integration with <a href="https://github.com/SciML/StructuralIdentifiability.jl">StructuralIdentifiability.jl</a></p>
+<li><p>good to excellent Julia coding skills</p>
 </li>
 </ul>
-<p><strong>Useful References:</strong></p>
-<ul>
-<li><p><a href="https://journals.plos.org/ploscompbiol/article?id&#61;10.1371/journal.pcbi.1008248">Paper on scaling transformations</a></p>
-</li>
-<li><p><a href="https://inria.hal.science/hal-00668882/">More involved paper on scaling transformations</a></p>
-</li>
-<li><p><a href="https://desr.readthedocs.io/en/latest/intro.html">Implementation in Python</a></p>
-</li>
-</ul>
-<h3 id="polynomialization_of_ordinary_differential_equations"><a href="#polynomialization_of_ordinary_differential_equations" class="header-anchor">Polynomialization of ordinary differential equations</a></h3>
-<p><strong>Project Overview:</strong> Many ODE models arising in modeling involve nonpolynomial functions &#40;fractions, exponentials, trigonometric, etc&#41;. Polynomialization is the rewriting of nonpolynomial functions as equivalent polynomial equations. It is a necessary preprocessing step in several contexts &#40;structural identifiability, model order reduction, reaction network synthesis&#41;. The project aims at implementing a package for polynomialization of ODEs and, potentially, adapting it for use in <a href="https://github.com/SciML/StructuralIdentifiability.jl">StructuralIdentifiability.jl</a>.</p>
-<p><strong>Mentors:</strong> <a href="https://github.com/sumiya11">Alexander Demin</a>, <a href="https://www.lix.polytechnique.fr/Labo/Gleb.POGUDIN/">Gleb Pogudin</a>, <a href="https://www.chrisrackauckas.com/">Chris Rackauckas</a></p>
-<p><strong>Project Difficulty</strong>: Medium</p>
-<p><strong>Estimated Duration</strong>: 350 hours</p>
-<p><strong>Ideal Candidate Profile:</strong></p>
-<ul>
-<li><p>Basic experience with Julia</p>
-</li>
-<li><p>Knowledge of ordinary differential equations</p>
-</li>
-</ul>
-<p><strong>Project Goals and Deliverables:</strong></p>
-<ul>
-<li><p>Implementation of an algorithm in Julia to perform polynomialization of ODEs</p>
-</li>
-<li><p>Comprehensive documentation and examples</p>
-</li>
-<li><p>&#40;Bonus&#41; Integration with <a href="https://github.com/SciML/StructuralIdentifiability.jl">StructuralIdentifiability.jl</a></p>
-</li>
-</ul>
-<p><strong>Useful References:</strong></p>
-<ul>
-<li><p><a href="https://inria.hal.science/hal-03220725">Paper on polynomialization #1</a></p>
-</li>
-<li><p><a href="https://dl.acm.org/doi/10.1145/1687399.1687474">Paper on polynomialization #2</a></p>
-</li>
-<li><p><a href="https://github.com/SciML/StructuralIdentifiability.jl/issues/144">Relevant GitHub issue</a></p>
-</li>
-<li><p><a href="https://github.com/AndreyBychkov/QBee/blob/master/qbee/polynomialization.py">An implementation of similar algorithms in Python</a></p>
-</li>
-</ul>
+<p><strong>Mentors</strong>: <a href="https://github.com/mtsch">Matija Čufar</a>, <a href="https://github.com/joachimbrand">Joachim Brand</a></p>
+<p>If you are interested please get in touch with <a href="mailto:matijacufar@gmail.com">Matija</a> or <a href="mailto:j.brand@massey.ac.nz">Joachim</a>.</p>
 <h2 id="topopt_projects_summer_of_code"><a href="#topopt_projects_summer_of_code" class="header-anchor">TopOpt Projects – Summer of Code</a></h2>
 <p><a href="https://github.com/JuliaTopOpt/TopOpt.jl">TopOpt.jl</a> is a <a href="https://en.wikipedia.org/wiki/Topology_optimization">topology optimization</a> package written in pure Julia. Topology optimization is an exciting field at the intersection of shape representation, physics simulations and mathematical optimization, and the Julia language is a great fit for this field. To learn more about <code>TopOpt.jl</code>, check the following <a href="https://www.youtube.com/watch?v&#61;sBqdkxPXluU">JuliaCon talk</a>.</p>
 <p>The following is a tentative list of projects in topology optimization that you could be working on in the coming Julia Season of Contributions or Google Summer of Code. If you are interested in exploring any of these topics or if you have other interests related to topology optimization, please reach out to the main mentor <a href="https://github.com/mohamed82008">Mohamed Tarek</a> via email.</p>
@@ -1260,7 +1260,32 @@ ERROR: Your expression contained a if_else expression. FastDifferentiation does 
 <p><strong>Mentors</strong>: <a href="https://github.com/huiyuxie">Huiyu Xie</a>, <a href="https://github.com/jlchan">Jesse Chan</a>, <a href="https://github.com/ranocha">Hendrik Ranocha</a></p>
 <h2 id="turing_projects"><a href="#turing_projects" class="header-anchor">Turing Projects</a></h2>
 <p><a href="https://turinglang.org/">Turing.jl</a> is a universal probabilistic programming language embedded in Julia. Turing allows the user to write statistical models in standard Julia syntax, and provides a wide range of sampling-based inference methods for solving problems across probabilistic machine learning, Bayesian statistics, and data science. Since Turing is implemented in pure Julia code, its compiler and inference methods are amenable to hacking: new model families and inference methods can be easily added.</p>
-<p>The Turing team is currently planning projects for GSoC 2025, and will post them here once they are ready. You are also welcome to propose your own projects. If you are interested in working on Turing for GSoC 2025, please reach out to Markus Hauru &#40;@mhauru&#41; on Julia&#39;s <a href="https://julialang.org/slack/">Slack</a> or <a href="https://discourse.julialang.org/">Discourse</a>.</p>
+<p>Below are the projects we have in mind for GSoC 2025. If you are interested in working on any of them, or want to propose your own Turing.jl-related GSoC project, please reach out to Markus Hauru &#40;@mhauru&#41; on Julia&#39;s <a href="https://julialang.org/slack/">Slack</a> or <a href="https://discourse.julialang.org/">Discourse</a>.</p>
+<h3 id="mooncakejl_performance_optimization"><a href="#mooncakejl_performance_optimization" class="header-anchor">Mooncake.jl Performance Optimization</a></h3>
+<p>Difficulty: Medium</p>
+<p>Duration: 350 hours</p>
+<p>Description: <a href="https://github.com/compintell/Mooncake.jl/">Mooncake.jl</a> is a reverse-mode AD package written entirely in Julia, which addresses many of limitations of the popular <a href="https://github.com/JuliaDiff/ReverseDiff.jl">ReverseDiff.jl</a> and <a href="https://github.com/FluxML/Zygote.jl">Zygote.jl</a> libraries. While the library is typically fast, performance is not tested as systematically as it could be, meaning that there are probably a range of performance bugs waiting to be uncovered. Additionally, there are a range of known performance limitations which need to be addressed. This project aims to resolve known performance problems, to find new ones, and fix them too&#33;</p>
+<p>Skills: familiarity with Julia programming, how to make Julia code performant, and a strong desire to make existing Julia code more performant&#33; An understanding of AD is helpful, but not essential.</p>
+<h3 id="r_and_python_interfaces_for_juliabugs"><a href="#r_and_python_interfaces_for_juliabugs" class="header-anchor">R and Python Interfaces for JuliaBUGS</a></h3>
+<p>Difficulty: Medium</p>
+<p>Duration: 175 hours or 350 hours</p>
+<p><a href="https://github.com/TuringLang/JuliaBUGS.jl">JuliaBUGS</a> is a Julia implementation of the <a href="https://en.wikipedia.org/wiki/WinBUGS">BUGS</a> probabilistic programming language. It emphasizes interoperability and modularity. JuliaBUGS gives users familiar with BUGS access to Hamiltonian Monte Carlo &#40;HMC&#41;, Automatic Differentiation &#40;AD&#41;, and Julia’s powerful scientific computing tools. This Google Summer of Code &#40;GSoC&#41; project aims to create easy-to-use R and Python interfaces for JuliaBUGS.</p>
+<p>Project Tasks:</p>
+<ul>
+<li><p><em>Interface Design</em>: Develop R and Python packages similar to existing and widely used R packages like R2OpenBUGS and rjags, making it easy for users to adopt.</p>
+</li>
+<li><p><em>Interoperability Development</em>: Use Julia&#39;s existing packages &#40;<a href="https://github.com/JuliaInterop/JuliaCall">JuliaCall</a> and <a href="https://github.com/JuliaPy/PythonCall.jl">PythonCall</a>&#41; to create the interfaces. This will allow smooth data transfer and function calls between Julia, R, and Python.</p>
+</li>
+<li><p><em>Integration with Tools &#40;Large Project&#41;</em>: Integrate these new interfaces seamlessly with popular Bayesian visualization and diagnostics tools—such as bayesplot, posterior, and coda in R, and ArviZ in Python.</p>
+</li>
+<li><p><em>Documentation and Tutorials &#40;Large Project&#41;</em>: Create clear and practical documentation, including tutorials, to support users in understanding and effectively using the interfaces.</p>
+</li>
+</ul>
+<p>Participants will gain hands-on experience in Bayesian statistics, software engineering, computational methods, and developing software that works across multiple programming languages. This will prepare them well for future academic and professional opportunities.</p>
+<h3 id="jaxprs_in_julia"><a href="#jaxprs_in_julia" class="header-anchor">Jaxprs in Julia</a></h3>
+<p>Difficulty: Hard</p>
+<p>Duration: TBD</p>
+<p>The Turing.jl team is looking for a student to implement a lightweight Julia library to work with <a href="https://docs.jax.dev/en/latest/jaxpr.html">Jaxprs</a>. If this could be you, get in touch and we can discuss the details.</p>
 <h2 id="vs_code_projects"><a href="#vs_code_projects" class="header-anchor">VS Code projects</a></h2>
 <h3 id="vs_code_extension"><a href="#vs_code_extension" class="header-anchor">VS Code extension</a></h3>
 <p>We are generally looking for folks that want to help with the <a href="https://www.julia-vscode.org/">Julia VS Code extension</a>. We have a long list of open issues, and some of them amount to significant projects.</p>
